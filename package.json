@@ -1,0 +1,41 @@
+{
+  "name": "api-doligones",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "prod": "cross-env NODE_ENV=production nodemon index.js",
+    "test": "lab -C -D -v -l --context-timeout 0 --timeout 10000"
+  },
+  "repository": "git@github.com:umens/api-doligones.git",
+  "author": "Mensa ulysse <ulysse.mensa@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "boom": "^7.2.0",
+    "chalk": "^2.4.1",
+    "confidence": "^3.0.2",
+    "dotenv": "^6.0.0",
+    "glue": "^5.0.0",
+    "good": "^8.1.1",
+    "good-console": "^7.1.0",
+    "good-file": "^6.0.1",
+    "good-squeeze": "^5.1.0",
+    "hapi": "^17.6.0",
+    "hapi-auto-route": "^2.0.3",
+    "hapi-swagger": "^9.1.1",
+    "hapijs-status-monitor": "https://github.com/ziyasal/hapijs-status-monitor.git",
+    "inert": "^5.1.0",
+    "joi": "^13.7.0",
+    "moment": "^2.22.2",
+    "nodemailer": "^4.6.8",
+    "nodemon": "^1.18.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "vision": "^5.4.0",
+    "white-out": "^2.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
+  }
+}
