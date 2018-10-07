@@ -3,13 +3,13 @@ const Glue = require('glue');
 const chalk = require('chalk');
 const log = console.log;
 const dotenv = require('dotenv');
-var Confidence = require('confidence');
+const Confidence = require('confidence');
 
 // Configs & Utils
 const config = require('./config/confidence');
 
 // Vars
-var store = new Confidence.Store();
+const store = new Confidence.Store();
 store.load(config.manifest);
 
 const startServer = async () => {
@@ -22,6 +22,13 @@ const startServer = async () => {
     });
     await server.start();
     server.log(['success', 'server', 'start'], chalk.green(`Server running at ${server.info.uri}`));
+
+    server.events.on('log', (event, tags) => {
+      if (tags.error) {
+        console.log(chalk.red(`Server error: ${event.error ? event.error.message : 'unknown'}`));
+      }
+    });
+
   } catch (err) {
     // server.log(['error', 'server', 'start'], chalk.red(err));    
     log(chalk.red(err));
@@ -30,8 +37,8 @@ const startServer = async () => {
 };
 
 process.on('unhandledRejection', (error) => {
-  console.log(error);
-  process.exit();
+  console.log(chalk.red(error));
+  process.exit(1);
 });
 
 startServer();

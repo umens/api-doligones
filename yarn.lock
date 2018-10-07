@@ -132,7 +132,7 @@ async-limiter@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
 
-async@^2.5.0:
+async@^2.5.0, async@^2.6.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.1.tgz#b245a23ca71930044ec53fa46aa00a3e87c6a610"
   dependencies:
@@ -603,6 +603,15 @@ detect-libc@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
 
+disinfect@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/disinfect/-/disinfect-1.0.0.tgz#83a2c82505b8e493536f322da770625b50cf4ad4"
+  dependencies:
+    async "^2.6.0"
+    hoek "^5.0.3"
+    joi "^13.1.2"
+    sanitizer "^0.1.3"
+
 dot-prop@^4.1.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-4.2.0.tgz#1f19e0c2e1aa0e32797c49799f2837ac6af69c57"
@@ -1001,6 +1010,23 @@ hapi-auto-route@^2.0.3:
     glob "7.x.x"
     joi "13.x.x"
 
+hapi-boom-decorators@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/hapi-boom-decorators/-/hapi-boom-decorators-4.1.1.tgz#d55c8ee8998b6f611e3165e3368f6558bb269b2f"
+  dependencies:
+    boom "^7.2.0"
+
+hapi-info@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/hapi-info/-/hapi-info-2.0.3.tgz#2c9ad7e7238b1d3d17ae4bc6cadb2b5f6c4e780f"
+  dependencies:
+    hoek "3.x.x"
+    joi "7.x.x"
+
+hapi-response-time@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/hapi-response-time/-/hapi-response-time-2.0.0.tgz#0dd749962d690f92a1d6f4598b7c2f225c48f7e1"
+
 hapi-swagger@^9.1.1:
   version "9.1.1"
   resolved "http://registry.npmjs.org/hapi-swagger/-/hapi-swagger-9.1.1.tgz#32e06cdaaf6974fb1445abccb0cb1912650561ac"
@@ -1106,6 +1132,10 @@ heavy@6.x.x:
     boom "7.x.x"
     hoek "5.x.x"
     joi "13.x.x"
+
+hoek@3.x.x:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/hoek/-/hoek-3.0.4.tgz#268adff66bb6695c69b4789a88b1e0847c3f3123"
 
 hoek@4.2.x, hoek@4.x.x:
   version "4.2.1"
@@ -1364,6 +1394,10 @@ isarray@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
 
+isemail@2.x.x:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/isemail/-/isemail-2.2.1.tgz#0353d3d9a62951080c262c2aa0a42b8ea8e9e2a6"
+
 isemail@3.x.x:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/isemail/-/isemail-3.1.3.tgz#64f37fc113579ea12523165c3ebe3a71a56ce571"
@@ -1407,6 +1441,15 @@ joi@13.x.x, joi@^13.1.2, joi@^13.7.0:
     hoek "5.x.x"
     isemail "3.x.x"
     topo "3.x.x"
+
+joi@7.x.x:
+  version "7.3.0"
+  resolved "http://registry.npmjs.org/joi/-/joi-7.3.0.tgz#4d9c9f181830444083665b5b6cd5b8ca6779a5e9"
+  dependencies:
+    hoek "3.x.x"
+    isemail "2.x.x"
+    moment "2.x.x"
+    topo "2.x.x"
 
 js-yaml@^3.10.0, js-yaml@^3.12.0:
   version "3.12.0"
@@ -1646,7 +1689,7 @@ moment@2.20.x:
   version "2.20.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
 
-moment@^2.22.2:
+moment@2.x.x, moment@^2.22.2:
   version "2.22.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
@@ -2188,6 +2231,10 @@ rimraf@^2.2.8, rimraf@^2.6.1:
   dependencies:
     glob "^7.0.5"
 
+rotating-file-stream@^1.3.9:
+  version "1.3.9"
+  resolved "https://registry.yarnpkg.com/rotating-file-stream/-/rotating-file-stream-1.3.9.tgz#7cc79bafb55e700f256a34efd42678ad3a35b240"
+
 safe-buffer@^5.0.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
@@ -2201,6 +2248,10 @@ safe-regex@^1.1.0:
 "safer-buffer@>= 2.1.2 < 3", safer-buffer@^2.0.2, safer-buffer@^2.1.0, safer-buffer@~2.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
+
+sanitizer@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/sanitizer/-/sanitizer-0.1.3.tgz#d4f0af7475d9a7baf2a9e5a611718baa178a39e1"
 
 sax@^1.2.4:
   version "1.2.4"

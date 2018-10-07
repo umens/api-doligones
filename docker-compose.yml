@@ -1,0 +1,22 @@
+version: '3'
+services:
+  # db:
+  #   image: mongo:latest
+  #   container_name: db
+  #   ports:
+  #     - "27017:27017"
+  #   command: --smallfiles
+  #   # environment:
+  #   #   MONGO_INITDB_ROOT_USERNAME: root
+  #   #   MONGO_INITDB_ROOT_PASSWORD: example
+
+  api:
+    build: .
+    container_name: api
+    command: yarn run prod
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app

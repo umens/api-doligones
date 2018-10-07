@@ -34,13 +34,19 @@ exports.manifest = {
           {
             plugin: "good",
             options: {
+              ops: {
+                interval: 1000
+              },
               reporters: {
                 console: [{
                     module: "good-squeeze",
                     name: "Squeeze",
                     args: [{
+                      // ops: '*',
                       response: "*",
-                      log: "*"
+                      log: "*",
+                      error: "*",
+                      request: "*"
                     }]
                   },
                   {
@@ -57,6 +63,38 @@ exports.manifest = {
                     }]
                   },
                   "stdout"
+                ],
+                file: [{
+                    module: 'good-squeeze',
+                    name: 'Squeeze',
+                    args: [{
+                      // ops: '*',
+                      response: "*",
+                      log: "*",
+                      error: "*",
+                      request: "*"
+                    }]
+                  },
+                  {
+                    module: 'good-squeeze',
+                    name: 'SafeJson',
+                    args: [
+                      null,
+                      {
+                        separator: ','
+                      }
+                    ]
+                  },
+                  {
+                    module: 'rotating-file-stream',
+                    args: [
+                      'ops.log',
+                      {
+                        size: '1000B',
+                        path: './logs'
+                      }
+                    ]
+                  }
                 ]
               }
             }
@@ -71,7 +109,17 @@ exports.manifest = {
               }
             }
           },
-          'hapi-auto-route'
+          'hapi-auto-route',
+          {
+            plugin: require('disinfect'),
+            options: {
+              disinfectQuery: true,
+              disinfectParams: true,
+              disinfectPayload: true
+            }
+          },
+          'hapi-response-time',
+          'hapi-boom-decorators'
         ],
         options: {
           once: true
@@ -95,13 +143,19 @@ exports.manifest = {
           {
             plugin: "good",
             options: {
+              ops: {
+                interval: 1000
+              },
               reporters: {
                 console: [{
                     module: "good-squeeze",
                     name: "Squeeze",
                     args: [{
+                      // ops: '*',
                       response: "*",
-                      log: "*"
+                      log: "*",
+                      error: "*",
+                      request: "*"
                     }]
                   },
                   {
@@ -118,18 +172,49 @@ exports.manifest = {
                     }]
                   },
                   "stdout"
-                ]
+                ],
+                file: [{
+                  module: 'good-squeeze',
+                  name: 'Squeeze',
+                  args: [{
+                    // ops: '*',
+                    response: "*",
+                    log: "*",
+                    error: "*",
+                    request: "*"
+                  }]
+                }, {
+                  module: 'good-squeeze',
+                  name: 'SafeJson'
+                }, {
+                  module: 'good-file',
+                  args: ['./logs/development.log']
+                }]
               }
             }
           },
-          'hapi-auto-route'
+          'hapi-auto-route',
+          {
+            plugin: require('disinfect'),
+            options: {
+              disinfectQuery: true,
+              disinfectParams: true,
+              disinfectPayload: true
+            }
+          },
+          // {
+          //   plugin: require('hapi-info'),
+          //   options: {}
+          // },
+          'hapi-response-time',
+          'hapi-boom-decorators'
         ],
         options: {
           once: true
         }
       }
     }
-  },
+  }
   // database: {
   //   $filter: 'env',
   //   production: 'foo_production',

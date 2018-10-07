@@ -28,7 +28,8 @@ module.exports = [{
     method: 'GET',
     path: '/another',
     handler: (request, h) => {
-      return 'Hello, world again!';
+      return h.notFound();
+      // return 'Hello, world again!';
     }
   },
 ];
