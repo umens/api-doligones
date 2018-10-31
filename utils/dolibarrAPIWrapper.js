@@ -1,11 +1,12 @@
 class DolibarrAPI {
 
-  constructor(projects) {
-      this.projects = projects;
+  constructor() {
+    this.apiUrl = process.env.DOLIBARR_API_URL;
+    this.apiKey = process.env.DOLIBARR_API_KEY;
   }
 
-  getProject(name) {
-      return this.projects[name];
+  getProject() {
+    return this.apiUrl;
   }
 }
 

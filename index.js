@@ -18,14 +18,20 @@ const startServer = async () => {
     const server = await Glue.compose(store.get('/serverConfig', {
       env: process.env.NODE_ENV
     }), {
-      relativeTo: __dirname
-    });
+        relativeTo: __dirname
+      });
     await server.start();
     server.log(['success', 'server', 'start'], chalk.green(`Server running at ${server.info.uri}`));
 
     server.events.on('log', (event, tags) => {
       if (tags.error) {
         console.log(chalk.red(`Server error: ${event.error ? event.error.message : 'unknown'}`));
+      }
+    });
+
+    server.events.on('request', (event, tags) => {
+      if (tags.error) {
+        console.log(chalk.red(`Error on request: ${event.error ? event.error.message : 'unknown'}`));
       }
     });
 

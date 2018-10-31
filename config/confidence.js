@@ -39,62 +39,62 @@ exports.manifest = {
               },
               reporters: {
                 console: [{
-                    module: "good-squeeze",
-                    name: "Squeeze",
-                    args: [{
-                      // ops: '*',
-                      response: "*",
-                      log: "*",
-                      error: "*",
-                      request: "*"
-                    }]
-                  },
-                  {
-                    module: "white-out",
-                    args: [{
-                      password: "remove",
-                      email: "^(.*)(?=@)"
-                    }]
-                  },
-                  {
-                    module: "good-console",
-                    args: [{
-                      format: "[[]DD/MMM/YYYY HH:mm:ss ZZ[]]"
-                    }]
-                  },
+                  module: "good-squeeze",
+                  name: "Squeeze",
+                  args: [{
+                    // ops: '*',
+                    response: "*",
+                    log: "*",
+                    error: "*",
+                    request: "*"
+                  }]
+                },
+                {
+                  module: "white-out",
+                  args: [{
+                    password: "remove",
+                    email: "^(.*)(?=@)"
+                  }]
+                },
+                {
+                  module: "good-console",
+                  args: [{
+                    format: "[[]DD/MMM/YYYY HH:mm:ss ZZ[]]"
+                  }]
+                },
                   "stdout"
                 ],
                 file: [{
-                    module: 'good-squeeze',
-                    name: 'Squeeze',
-                    args: [{
-                      // ops: '*',
-                      response: "*",
-                      log: "*",
-                      error: "*",
-                      request: "*"
-                    }]
-                  },
-                  {
-                    module: 'good-squeeze',
-                    name: 'SafeJson',
-                    args: [
-                      null,
-                      {
-                        separator: ','
-                      }
-                    ]
-                  },
-                  {
-                    module: 'rotating-file-stream',
-                    args: [
-                      'ops.log',
-                      {
-                        size: '1000B',
-                        path: './logs'
-                      }
-                    ]
-                  }
+                  module: 'good-squeeze',
+                  name: 'Squeeze',
+                  args: [{
+                    // ops: '*',
+                    response: "*",
+                    log: "*",
+                    error: "*",
+                    request: "*"
+                  }]
+                },
+                {
+                  module: 'good-squeeze',
+                  name: 'SafeJson',
+                  args: [
+                    null,
+                    {
+                      separator: ','
+                    }
+                  ]
+                },
+                {
+                  module: 'rotating-file-stream',
+                  args: [
+                    'ops.log',
+                    {
+                      size: '1000B',
+                      path: './logs'
+                    }
+                  ]
+                }
                 ]
               }
             }
@@ -148,29 +148,29 @@ exports.manifest = {
               },
               reporters: {
                 console: [{
-                    module: "good-squeeze",
-                    name: "Squeeze",
-                    args: [{
-                      // ops: '*',
-                      response: "*",
-                      log: "*",
-                      error: "*",
-                      request: "*"
-                    }]
-                  },
-                  {
-                    module: "white-out",
-                    args: [{
-                      password: "remove",
-                      email: "^(.*)(?=@)"
-                    }]
-                  },
-                  {
-                    module: "good-console",
-                    args: [{
-                      format: "[[]DD/MMM/YYYY HH:mm:ss ZZ[]]"
-                    }]
-                  },
+                  module: "good-squeeze",
+                  name: "Squeeze",
+                  args: [{
+                    // ops: '*',
+                    response: "*",
+                    log: "*",
+                    error: "*",
+                    request: "*"
+                  }]
+                },
+                {
+                  module: "white-out",
+                  args: [{
+                    password: "remove",
+                    email: "^(.*)(?=@)"
+                  }]
+                },
+                {
+                  module: "good-console",
+                  args: [{
+                    format: "[[]DD/MMM/YYYY HH:mm:ss ZZ[]]"
+                  }]
+                },
                   "stdout"
                 ],
                 file: [{
@@ -202,10 +202,6 @@ exports.manifest = {
               disinfectPayload: true
             }
           },
-          // {
-          //   plugin: require('hapi-info'),
-          //   options: {}
-          // },
           'hapi-response-time',
           'hapi-boom-decorators'
         ],
