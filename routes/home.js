@@ -2,9 +2,12 @@
 
 const chalk = require('chalk');
 const Boom = require('boom');
+const fs = require("fs");
 
 const HelloAssoAPI = require('../utils/helloAssoAPIWrapper');
 const HelloWrapper = new HelloAssoAPI();
+const DolibarrAPI = require('../utils/dolibarrAPIWrapper');
+const DolibarrWrapper = new DolibarrAPI();
 
 module.exports = [{
   method: 'GET',
@@ -41,10 +44,27 @@ module.exports = [{
 },
 {
   method: 'GET',
-  path: '/another',
-  handler: (request, h) => {
-    return h.notFound();
-    // return 'Hello, world again!';
+  path: '/createGonesMembersDoliAPI',
+  handler: async function (request, h) {
+    try {
+      request.log(['info', 'api'], chalk.blue(`creating Members`));
+      var contents = fs.readFileSync("gones_licences_infos_perso.json");
+      var jsonContent = JSON.parse(contents);
+      for (var line of jsonContent) {
+        var member = await DolibarrWrapper.getAdherentByEmail(line.email);
+        var result = null;
+        if (member === null) {
+          result = await DolibarrWrapper.createGonesMember(line);
+          request.log(['info', 'api'], chalk.blue(`creating member ${line.lastname} ${line.firstname}`));
+        } else {
+          result = await DolibarrWrapper.updateGonesMember(member.id, line);
+          request.log(['info', 'api'], chalk.blue(`updating member ${member.email}`));
+        }
+      }
+      return h.response('Members created');
+    } catch (err) {
+      throw err;
+    }
   }
 },
 ];

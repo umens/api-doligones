@@ -17,6 +17,7 @@ class HelloAssoAPI {
   }
 
   listOrganizations(page = 1, results_per_page = 20) {
+    var _self = this;
     this.options.uri = this.apiUrl + "/organizations.json?page=" + page + "&results_per_page=" + results_per_page;
 
     return rp(this.options)
@@ -24,7 +25,7 @@ class HelloAssoAPI {
         return organizations.resources;
       })
       .catch(function (err) {
-        throw err;
+        throw _self.returnError(err, _self.options);
       });
   }
 
@@ -37,7 +38,7 @@ class HelloAssoAPI {
         return organization;
       })
       .catch(function (err) {
-        throw returnError(err, _self.options);
+        throw _self.returnError(err, _self.options);
         // throw {
         //   message: err.error.message,
         //   statusCode: err.statusCode,
@@ -46,21 +47,22 @@ class HelloAssoAPI {
       });
   }
 
-  getProject() {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve({
-          apiUrl: this.apiUrl,
-          apiLogin: this.apiLogin,
-          apiPaswword: this.apiPaswword,
-        });
-      }, 2000);
-    }).then(data => {
-      return data.apiUrl;
-    });
-  }
+  // getProject() {
+  //   return new Promise(resolve => {
+  //     setTimeout(() => {
+  //       resolve({
+  //         apiUrl: this.apiUrl,
+  //         apiLogin: this.apiLogin,
+  //         apiPaswword: this.apiPaswword,
+  //       });
+  //     }, 2000);
+  //   }).then(data => {
+  //     return data.apiUrl;
+  //   });
+  // }
 
   returnError(err, datas) {
+    console.log(err.error.code);
     switch (err.error.code) {
       case "com.helloasso.api.InvalidResource":
         return Boom.badData(err.error.message, datas);
@@ -70,6 +72,7 @@ class HelloAssoAPI {
         return Boom.badRequest(err.error.message, datas);
         break;
       case 401:
+      case "com.helloasso.api.UnauthorizedAccess":
         return Boom.unauthorized(err.error.message, datas);
         break;
       case "com.helloasso.api.NonSecureConnection":
